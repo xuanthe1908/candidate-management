@@ -44,7 +44,6 @@ const Auth = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">
-        {/* Header */}
         <div>
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center">
@@ -61,24 +60,20 @@ const Auth = () => {
           </p>
         </div>
 
-        {/* Auth Tabs */}
         <AuthTabs isLogin={isLogin} onToggle={handleTabToggle} />
 
-        {/* Error Message */}
         {error && (
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
             {error}
           </div>
         )}
 
-        {/* Success Message */}
         {message && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
             {message}
           </div>
         )}
 
-        {/* Auth Form */}
         <div className="mt-8">
           {isLogin ? (
             <LoginForm onSubmit={handleAuth} loading={loading} />
@@ -87,7 +82,6 @@ const Auth = () => {
           )}
         </div>
 
-        {/* Footer */}
         <div className="mt-8 text-center text-xs text-gray-500">
           <p>Demo Application - Hệ thống quản lý ứng viên</p>
           <p className="mt-1">Xây dựng với React + TypeScript + Supabase</p>

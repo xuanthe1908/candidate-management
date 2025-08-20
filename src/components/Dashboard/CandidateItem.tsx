@@ -58,9 +58,7 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
   return (
     <div className="p-6 hover:bg-gray-50 transition-colors border-b border-gray-200 last:border-b-0">
       <div className="flex items-start justify-between">
-        {/* Left side - Main info */}
         <div className="flex-1 min-w-0">
-          {/* Name and Status Row */}
           <div className="flex items-center space-x-3 mb-3">
             <div className="flex-shrink-0">
               <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">
@@ -78,8 +76,7 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
               </span>
             </div>
           </div>
-          
-          {/* Position */}
+
           <div className="mb-2">
             <p className="text-sm text-gray-600">
               <span className="font-medium text-gray-700">Vị trí ứng tuyển:</span>{' '}
@@ -87,7 +84,6 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
             </p>
           </div>
           
-          {/* Application Date */}
           <div className="mb-3">
             <p className="text-xs text-gray-500">
               <svg className="inline w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,7 +101,6 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
             )}
           </div>
 
-          {/* Resume Link */}
           {candidate.resume_url && (
             <div className="mb-4">
               <a
@@ -122,7 +117,6 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
             </div>
           )}
 
-          {/* Status Update Controls */}
           <div className="flex items-center space-x-3">
             <label className="text-sm font-medium text-gray-700">
               Cập nhật trạng thái:
@@ -140,7 +134,6 @@ const CandidateItem = ({ candidate, onUpdateStatus, onDelete }: CandidateItemPro
           </div>
         </div>
 
-        {/* Right side - Actions */}
         <div className="flex items-start space-x-2 ml-6">
           <button
             onClick={handleDelete}

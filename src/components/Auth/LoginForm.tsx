@@ -67,7 +67,6 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Email Field */}
       <div>
         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
           Email *
@@ -100,7 +99,6 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         )}
       </div>
 
-      {/* Password Field */}
       <div>
         <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
           Mật khẩu *
@@ -152,7 +150,6 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         )}
       </div>
 
-      {/* Submit Button */}
       <div>
         <button
           type="submit"
@@ -177,7 +174,6 @@ const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         </button>
       </div>
 
-      {/* Demo credentials helper */}
       <div className="mt-4 p-3 bg-blue-50 rounded-md">
         <p className="text-xs text-blue-600 font-medium">💡 Demo credentials:</p>
         <p className="text-xs text-blue-600 mt-1">

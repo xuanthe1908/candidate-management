@@ -32,7 +32,6 @@ const SearchAndFilter = ({ onSearch, onFilterStatus, totalCount }: SearchAndFilt
   return (
     <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
-        {/* Search */}
         <div className="flex-1 max-w-md">
           <div className="relative">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -50,7 +49,6 @@ const SearchAndFilter = ({ onSearch, onFilterStatus, totalCount }: SearchAndFilt
           </div>
         </div>
 
-        {/* Filter by status */}
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
             <label className="text-sm font-medium text-gray-700">Trạng thái:</label>
@@ -67,7 +65,6 @@ const SearchAndFilter = ({ onSearch, onFilterStatus, totalCount }: SearchAndFilt
             </select>
           </div>
 
-          {/* Clear filters */}
           {(searchQuery || selectedStatus !== 'all') && (
             <button
               onClick={clearFilters}
@@ -78,7 +75,6 @@ const SearchAndFilter = ({ onSearch, onFilterStatus, totalCount }: SearchAndFilt
           )}
         </div>
 
-        {/* Total count */}
         <div className="text-sm text-gray-600">
           <span className="font-medium">{totalCount}</span> ứng viên
         </div>
