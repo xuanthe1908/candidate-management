@@ -1,0 +1,98 @@
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* Loading animations */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* Custom styles */
+.transition-colors {
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+/* Focus styles */
+.focus\\:ring-blue-500:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 0.5);
+}
+
+/* Hover effects */
+.hover\\:bg-gray-50:hover {
+  background-color: rgb(249 250 251);
+}
+
+.hover\\:bg-blue-700:hover {
+  background-color: rgb(29 78 216);
+}
+
+.hover\\:bg-red-700:hover {
+  background-color: rgb(185 28 28);
+}
+
+.hover\\:text-blue-800:hover {
+  color: rgb(30 64 175);
+}
+
+.hover\\:text-red-800:hover {
+  color: rgb(153 27 27);
+}
+
+/* Disabled styles */
+.disabled\\:bg-gray-100:disabled {
+  background-color: rgb(243 244 246);
+}
+
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+/* Custom components */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .grid.lg\\:grid-cols-3 {
+    grid-template-columns: 1fr;
+  }
+  
+  .lg\\:col-span-1,
+  .lg\\:col-span-2 {
+    grid-column: span 1;
+  }
+  
+  .max-w-7xl {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
