@@ -670,7 +670,7 @@ const Dashboard = () => {
                 <span>Tổng ứng viên: {stats.total}</span>
               </div>
               <p className="text-gray-400">
-                © 2024 Candidate Management System - Realtime Updates Enabled
+                © 2025 Candidate Management System - Realtime Updates Enabled
               </p>
             </div>
           </div>
