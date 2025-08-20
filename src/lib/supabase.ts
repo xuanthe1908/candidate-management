@@ -9,20 +9,20 @@ if (!supabaseUrl || !supabaseAnonKey) {
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
-// Types - Export as types only
-export interface Candidate {
-  id: string
-  user_id: string
-  full_name: string
-  applied_position: string
-  status: 'New' | 'Interviewing' | 'Hired' | 'Rejected'
-  resume_url: string | null
-  created_at: string
-  updated_at: string
-}
+// Helper function to upload file
+export const uploadFile = async (file: File, userId: string): Promise<string> => {
+  const fileExt = file.name.split('.').pop()
+  const fileName = `${userId}/${Date.now()}.${fileExt}`
+  
+  const { error } = await supabase.storage
+    .from('resumes')
+    .upload(fileName, file)
 
-export interface User {
-  id: string
-  email: string
-  created_at: string
+  if (error) throw error
+
+  const { data } = supabase.storage
+    .from('resumes')
+    .getPublicUrl(fileName)
+
+  return data.publicUrl
 }
