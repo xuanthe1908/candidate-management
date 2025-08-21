@@ -16,11 +16,9 @@ const Dashboard = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState('all')
 
-  // Filter candidates based on search and status
   const filteredCandidates = useMemo(() => {
     let filtered = candidates
 
-    // Filter by search query
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase()
       filtered = filtered.filter(candidate => 
@@ -29,7 +27,6 @@ const Dashboard = () => {
       )
     }
 
-    // Filter by status
     if (statusFilter !== 'all') {
       filtered = filtered.filter(candidate => candidate.status === statusFilter)
     }
@@ -255,9 +252,6 @@ const Dashboard = () => {
         console.log('Candidate added successfully via direct insert:', data)
         candidateAdded = true
         
-        // Since we're doing direct insert, we might need to manually trigger the realtime update
-        // The realtime subscription should handle this automatically, but let's add a small delay
-        // to ensure the UI updates
         setTimeout(() => {
           if (!candidates.some(c => c.id === data.id)) {
             console.log('Manually adding candidate to list (realtime might be delayed)')
@@ -269,8 +263,6 @@ const Dashboard = () => {
 
       if (candidateAdded) {
         console.log('Candidate successfully added, waiting for realtime update...')
-        // The realtime subscription will handle updating the UI
-        // We don't manually update the candidates list here to avoid duplicates
       }
       
     } catch (err: unknown) {
@@ -393,12 +385,9 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <Header />
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        {/* Success Toast */}
         {success && (
           <div className="fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
             <div className="flex items-center justify-between">
@@ -418,7 +407,6 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Error Toast */}
         {error && (
           <div className="fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50">
             <div className="flex items-center justify-between">
@@ -438,10 +426,8 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Search and Filter Bar */}
         <div className="bg-white p-6 rounded-lg shadow mb-8">
           <div className="flex flex-col lg:flex-row gap-6 items-start lg:items-center justify-between">
-            {/* Search */}
             <div className="flex-1 max-w-md">
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -460,7 +446,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Filters */}
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 <label className="text-sm font-medium text-gray-700">Trạng thái:</label>
@@ -478,7 +463,6 @@ const Dashboard = () => {
                 </select>
               </div>
 
-              {/* Clear filters */}
               {(searchQuery || statusFilter !== 'all') && (
                 <button
                   onClick={clearFilters}
@@ -489,7 +473,6 @@ const Dashboard = () => {
               )}
             </div>
 
-            {/* Stats */}
             <div className="text-sm font-medium text-gray-600">
               {filteredCandidates.length} / {stats.total} ứng viên
             </div>
@@ -497,9 +480,7 @@ const Dashboard = () => {
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
-          {/* Left Column - Form and Stats */}
           <div className="xl:col-span-1 space-y-8">
-            {/* Add Candidate Form */}
             <div className="bg-white p-6 rounded-lg shadow">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center mr-3">
@@ -515,7 +496,6 @@ const Dashboard = () => {
               />
             </div>
 
-            {/* Statistics */}
             <div className="bg-white p-6 rounded-lg shadow">
               <div className="flex items-center mb-6">
                 <div className="w-10 h-10 bg-green-500 rounded-lg flex items-center justify-center mr-3">
@@ -553,7 +533,6 @@ const Dashboard = () => {
               </div>
             </div>
 
-            {/* Quick Actions */}
             <div className="bg-white p-6 rounded-lg shadow">
               <h3 className="text-lg font-bold text-gray-900 mb-4">Thao tác nhanh</h3>
               <div className="space-y-3">
@@ -581,7 +560,6 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* Right Column - Candidates List */}
           <div className="xl:col-span-3">
             <div className="bg-white rounded-lg shadow">
               <div className="p-6 border-b border-gray-200">
@@ -596,7 +574,6 @@ const Dashboard = () => {
                   </div>
                   
                   <div className="flex items-center space-x-3">
-                    {/* Realtime indicator */}
                     <div className="flex items-center text-xs text-green-600 bg-green-50 px-3 py-1 rounded-full">
                       <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
                       Live
@@ -615,7 +592,6 @@ const Dashboard = () => {
                 </div>
               </div>
               
-              {/* Loading indicator for adding candidate */}
               {addingCandidate && (
                 <div className="p-4 bg-blue-50 border-b border-blue-200">
                   <div className="flex items-center text-blue-700">
@@ -628,7 +604,6 @@ const Dashboard = () => {
                 </div>
               )}
               
-              {/* Candidates List */}
               <CandidateList 
                 candidates={filteredCandidates}
                 onUpdateStatus={handleUpdateStatus}
@@ -636,7 +611,6 @@ const Dashboard = () => {
                 loading={loading}
               />
               
-              {/* Empty state when filtered */}
               {!loading && candidates.length > 0 && filteredCandidates.length === 0 && (
                 <div className="p-8 text-center text-gray-500">
                   <div className="mb-4">
@@ -658,7 +632,6 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Footer */}
         <div className="mt-12 text-center">
           <div className="bg-white p-6 rounded-lg shadow">
             <div className="text-sm text-gray-500 space-y-2">
